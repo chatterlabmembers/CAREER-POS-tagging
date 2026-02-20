@@ -58,4 +58,14 @@ Follow the appropriate workflow depending on which phase of the project you are 
    - In the additional row(s), copy over the first three columns (`file_name`, `speaker`, `utterance`) from the original row.
    - **You should never edit the contents in the first three columns, only copy and paste contents when needed!**
 
-5. Repeat steps 3 & 4 until you have finished a .xlsx file. When finished, go back to the [CAREER manual POS file tracker](https://uchicago.app.box.com/file/2137948527819) spreadsheet and add today's date to `Last date worked on` column.
+5. Repeat steps 3 & 4 until you have finished a .xlsx file.
+
+6. Before you close the file, do a systematic check of contractions to ensure you didn't miss any tokens (ctrl/command + `F` key search for all cases of apostrophes).
+
+7. When finished, go back to the [CAREER manual POS file tracker](https://uchicago.app.box.com/file/2137948527819) spreadsheet and add today's date to `Last date worked on` column.
+
+#### FAQ's
+
+1. **Q:** Do I parse contractions? **A:** Yes. (e.g., "I'll" in "I'll do it" is tokenized as "will" (mod), "don't" in "I don't like it" is tokenized as "do" (aux), etc.)
+2. **Q:** How do I parse "be" verbs? **A:** Tokenize all of them as "be." (e.g., "I'm" in "I'm happy" is tokenzed as "be" (v), "were" in "they were there" is tokenized as "be" (v), etc.)
+
