@@ -238,7 +238,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 3:
         print(
-            "Usage: python3 clan_mor.py "
+            "Usage: python3 cha2xlsx.py "
             "<input_file> <output_file>"
         )
         sys.exit(1)
