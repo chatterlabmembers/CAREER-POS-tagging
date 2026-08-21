@@ -12,7 +12,8 @@ The following steps walk you through how to convert transcribed .eaf files to .x
 
 ## part 2: clean up .cha outputs
 
-1.  Run `clean_cha_tiers.py` script on all output .cha files to remove all speaker tiers that do not fit the 3-character speaker tiers format (as indicated by \* at the beginning of each line).
+1.  Keep all output .cha files from **part 1** in one folder.
+2.  Run `clean_cha_tiers.py` script on all output .cha files to remove all speaker tiers that do not fit the 3-character speaker tiers format (as indicated by \* at the beginning of each line).
     - NOTE: Speaker tiers that do *not* follow 3-character format cause CLAN's morphology processing to crash.
 
 ## part 3: adding %mor tier in .cha files
