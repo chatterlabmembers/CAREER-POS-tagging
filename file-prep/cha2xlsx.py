@@ -41,7 +41,11 @@ def get_readable_category(tag):
         'pro:rel': 'relative pronoun',
         'pro:sub': 'subject pronoun',
         'v': 'verb',
-        '?': 'unknown'    # for all unrecognized tokens
+
+        # to catch all unrecognized tokens
+        # this will over-extract tokens of our study's interest
+        
+        '?': 'unknown'
     }
     base_tag = tag.split('-')[0]
     return clan_categories.get(base_tag, tag)
