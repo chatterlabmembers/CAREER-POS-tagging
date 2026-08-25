@@ -2,27 +2,46 @@ import os
 import re
 import argparse
 
+
 def clean_cha_file(input_file, output_file):
 
-    # removes invalid speaker tiers from .cha files
+    # removes invalid speaker tiers and their continuation lines from .cha files
     # keeps only speaker tiers of the form *XXX:
-    # other speaker tier structures would cause CLAN to crash when tagging morphologies
+    # any illegal speaker tier and all following continuation lines are removed
+    # until the next legal speaker tier is reached
 
     with open(input_file, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
     cleaned_lines = []
 
+    # tracks whether inside an illegal speaker tier
+    removing = False
+
     for line in lines:
+
+        # a new speaker tier starts with *
         if line.startswith("*"):
-            # keeps only 3-character tiers like *CHI:, *FA1:, *MA1:, etc.
+
+            # check whether this is a legal 3-character speaker tier
             if re.match(r"^\*[A-Za-z0-9]{3}:", line):
+
+                # legal tier: keep it
+                removing = False
                 cleaned_lines.append(line)
+
             else:
+
+                # illegal tier: remove it and all continuation lines
+                # until the next legal speaker tier
+                removing = True
                 print(f"Removing tier: {line.strip()}")
+
         else:
-            # keeps all other lines
-            cleaned_lines.append(line)
+            
+            # keep the line if not from illegal speaker tier
+            if not removing:
+                cleaned_lines.append(line)
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.writelines(cleaned_lines)
@@ -44,13 +63,18 @@ def process_all_cha(input_folder, output_folder):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Remove invalid speaker tiers from .cha files."
+        description="Remove invalid speaker tiers and their continuation lines from .cha files."
     )
 
-    parser.add_argument("input_folder",
-                        help="Folder containing .cha files.")
-    parser.add_argument("output_folder",
-                        help="Folder for cleaned .cha files.")
+    parser.add_argument(
+        "input_folder",
+        help="Folder containing .cha files."
+    )
+
+    parser.add_argument(
+        "output_folder",
+        help="Folder for cleaned .cha files."
+    )
 
     args = parser.parse_args()
 
