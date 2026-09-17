@@ -21,7 +21,8 @@ Follow the appropriate workflow depending on which phase of the project you are 
 
 ## Human validation of CLAN POS tagging workflow
 
-Before you start validating CLAN's POS tagging, please work through the training file, which can be found [here](https://uchicago.app.box.com/folder/419070844664). Steps 3 and 4 below will guide you through on how to fill out the training file properly.
+> [!WARNING]
+> Before you start validating CLAN's POS tagging, please work through the training file, which can be found [here](https://uchicago.app.box.com/folder/419070844664). Steps 3 and 4 below will guide you through on how to fill out the training file properly.
 
 1. In [CAREER POS tagging > coding](https://uchicago.app.box.com/folder/314794154399) folder, open [CAREER POS tagging file tracker](https://uchicago.app.box.com/file/2442561906632) spreadsheet.
   
